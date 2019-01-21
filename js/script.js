@@ -1,7 +1,9 @@
 // Global Variables
 const students = document.getElementsByClassName("student-item cf");
+const pageHeader = document.querySelector('.page-header');
 let page = 1;
-studentsPerPage = 10;
+let studentsPerPage = 10;
+
 
 
 
@@ -28,22 +30,57 @@ const appendPageLinks = (list) => {
    div.classList.add("pagination");
    div.appendChild(ul);      
   
-for (let i = 1; i <= pageNum; i++) {
-   const li = document.createElement("li");
-   const a = document.createElement("a");
-   a.textContent = i; 
-   a.href = "#";
-   ul.appendChild(li); 
-   li.appendChild(a); 
-   li.addEventListener('click', (e) => {
-      showPage(students, i);
-   });
-  } 
+   for (let i = 1; i <= pageNum; i++) {
+      const li = document.createElement("li");
+      const a = document.createElement("a");
+      a.textContent = i; 
+      a.href = "#";
+      ul.appendChild(li); 
+      li.appendChild(a); 
+      li.addEventListener('click', (e) => {
+         showPage(students, i);
+      });
+   } 
 }
 
 //function that creates search bar 
+const searchForm = (list, name) => {
+   const searchDiv = document.createElement("div");
+   const input = document.createElement("input");
+   const button = document.createElement("button");
+   pageHeader.appendChild(searchDiv);
+   searchDiv.className = ("student-search");
+   searchDiv.appendChild(input);
+   searchDiv.appendChild(button);
+   input.type = 'text';
+   input.placeholder = "Search"
+   button.type = 'submit';
+   button.textContent = "SUBMIT";
+   const filterNames = () => {
+      let filterValue = input.value.toUpperCase();
+      for (let i = 0; i < students.length; i++) {
+         let a = students[i];
+         if (a.innerHTML.toUpperCase().indexOf(filterValue) > -1) {
+            students[i].style.display = '';
+         }else {
+           students[i].style.display = 'none';
+         }
+      }
+   }
+   input.addEventListener('keyup', (e) => {
+      filterNames();
+   })
+   button.addEventListener('click', (e) => {
+      filterNames();
+   })
+   
+}
+   
+   
+   
 
 
 //Calling the two functions.
 showPage(students, page);
 appendPageLinks(students);
+searchForm(students);
