@@ -25,14 +25,14 @@ const appendPageLinks = (list) => {
    div.classList.add("pagination");
    div.appendChild(ul);      
   
-for (let i = 1; i < pageNum; i++) {
+for (let i = 1; i <= pageNum; i++) {
    const li = document.createElement("li");
    const a = document.createElement("a");
    a.textContent = i; 
    a.href = "#";
    ul.appendChild(li); 
    li.appendChild(a); 
-   li[i].addEventListener('click', (e) => {
+   li.addEventListener('click', (e) => {
       showPage(students);
    });
   } 
