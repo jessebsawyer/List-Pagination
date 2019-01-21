@@ -7,8 +7,8 @@ studentsPerPage = 10;
 
 //Function to show only 10 students on the page.
 const showPage = (list, page) => {
-   const highRange = page * studentsPerPage;
-   const lowRange = highRange - 10;
+   const highRange = page * studentsPerPage - 1;
+   const lowRange = highRange - 9;
    for (let i = 0; i < list.length; i++) {
       if ( i >= lowRange && i <= highRange ) {
          list[i].style.display = 'block';
@@ -39,8 +39,10 @@ for (let i = 1; i <= pageNum; i++) {
       showPage(students, i);
    });
   } 
-  
 }
+
+//function that creates search bar 
+
 
 //Calling the two functions.
 showPage(students, page);
