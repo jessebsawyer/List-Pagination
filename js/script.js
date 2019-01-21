@@ -5,7 +5,7 @@ const students = document.getElementsByClassName("student-item cf");
 
 
 //Function to show only 10 students on the page.
-const showPage = (list, page) => {
+const showPage = (list) => {
    for (let i = 0; i < list.length; i++) {
       if ( i >= 0 && i <= 9 ) {
          list[i].style.display = 'block';
@@ -25,21 +25,20 @@ const appendPageLinks = (list) => {
    div.classList.add("pagination");
    div.appendChild(ul);      
   
-for (let i = 1; i < pageNum.length; i++) {
+for (let i = 1; i < pageNum; i++) {
    const li = document.createElement("li");
    const a = document.createElement("a");
    a.textContent = i; 
-   ul.appendChild(li); // li is not showing up in the DOM.
+   a.href = "#";
+   ul.appendChild(li); 
    li.appendChild(a); 
-   a[i].addEventListener('click', (e) => {
-      showPage(students, i);
-      let current = document.getElementsByClassName(".active"); // I've selected the active class but not sure where to go from here.
-      
+   li[i].addEventListener('click', (e) => {
+      showPage(students);
    });
   } 
   
 }
 
 //Calling the two functions.
-showPage(students, 1);
+showPage(students);
 appendPageLinks(students);
