@@ -43,7 +43,7 @@ const appendPageLinks = (list) => {
    } 
 }
 
-//function that creates search bar 
+//function that displays search bar 
 const searchForm = (list, name) => {
    const searchDiv = document.createElement("div");
    const input = document.createElement("input");
@@ -56,25 +56,32 @@ const searchForm = (list, name) => {
    input.placeholder = "Search"
    button.type = 'submit';
    button.textContent = "SUBMIT";
+
+   //Filter function
    const filterNames = () => {
       let filterValue = input.value.toUpperCase();
       for (let i = 0; i < students.length; i++) {
          let a = students[i];
+         //let b = [];
          if (a.innerHTML.toUpperCase().indexOf(filterValue) > -1) {
-            students[i].style.display = '';
+           // b.push(a);
+            showPage(a, 1);
+            appendPageLinks(a);
          }else {
            students[i].style.display = 'none';
+
          }
       }
    }
+ 
    input.addEventListener('keyup', (e) => {
       filterNames();
    })
    button.addEventListener('click', (e) => {
       filterNames();
    })
-   
-}
+}   
+
    
    
    
