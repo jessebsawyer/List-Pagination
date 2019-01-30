@@ -62,9 +62,7 @@ const searchForm = (list, name) => {
       let filterValue = input.value.toUpperCase();
       for (let i = 0; i < students.length; i++) {
          let a = students[i];
-         //let b = [];
          if (a.innerHTML.toUpperCase().indexOf(filterValue) > -1) {
-           // b.push(a);
             showPage(a, 1);
             appendPageLinks(a);
          }else {
