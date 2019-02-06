@@ -1,4 +1,5 @@
 // Global Variables
+
 const students = document.getElementsByClassName("student-item cf");
 const pageHeader = document.querySelector('.page-header');
 let page = 1;
@@ -60,17 +61,23 @@ const searchForm = (list, name) => {
    //Filter function
    const filterNames = () => {
       let filterValue = input.value.toUpperCase();
+      let list = [];
       for (let i = 0; i < students.length; i++) {
-         let a = students[i];
-         if (a.innerHTML.toUpperCase().indexOf(filterValue) > -1) {
-            showPage(a, 1);
-            appendPageLinks(a);
+         let a = students[i].getElementsByTagName('h3');
+         if (a.textContent.indexOf(filterValue) > -1) {
+            list.push(students[i]);
+            
+            
          }else {
            students[i].style.display = 'none';
 
          }
       }
+      showPage(list, 1);
+      appendPageLinks(list);
+   
    }
+
  
    input.addEventListener('keyup', (e) => {
       filterNames();
