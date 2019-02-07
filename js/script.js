@@ -64,6 +64,7 @@ const searchForm = (list, name) => {
       let list = [];
       for (let i = 0; i < students.length; i++) {
          let a = students[i].getElementsByTagName('h3');
+         console.log(a);
          if (a.textContent.indexOf(filterValue) > -1) {
             list.push(students[i]);
             
