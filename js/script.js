@@ -1,5 +1,4 @@
 // Global Variables
-
 const students = document.getElementsByClassName("student-item cf");
 const pageHeader = document.querySelector('.page-header');
 let page = 1;
@@ -8,7 +7,7 @@ let studentsPerPage = 10;
 
 
 
-//Function to show only 10 students on the page.
+//Function to show only 10 students on the page
 const showPage = (list, page) => {
    const highRange = page * studentsPerPage - 1;
    const lowRange = highRange - 9;
@@ -21,7 +20,7 @@ const showPage = (list, page) => {
    } 
 }
  
-//Function to append number links at bottom of page.
+//Function to append number links at bottom of page
 const appendPageLinks = (list) => {
    const pageNum = Math.ceil(list.length/10);
    const firstDiv = document.querySelector('.page');
@@ -45,7 +44,7 @@ const appendPageLinks = (list) => {
 }
 
 //function that displays search bar 
-const searchForm = (list, name) => {
+const searchForm = () => {
    const searchDiv = document.createElement("div");
    const input = document.createElement("input");
    const button = document.createElement("button");
@@ -58,24 +57,35 @@ const searchForm = (list, name) => {
    button.type = 'submit';
    button.textContent = "SUBMIT";
 
+   //Delete page Links function
+   const deletePage = () => {
+      for (let i = 0; i < students.length; i++) {
+         students[i].style.display = 'none';
+      }
+   }
+   
+   
    //Filter function
    const filterNames = () => {
       let filterValue = input.value.toUpperCase();
       let list = [];
+      
       for (let i = 0; i < students.length; i++) {
-         let a = students[i].getElementsByTagName('h3');
-         console.log(a);
-         if (a.textContent.indexOf(filterValue) > -1) {
+         let a = students[i].getElementsByTagName('h3')[0];
+         
+         if (a.innerHTML.toUpperCase().indexOf(filterValue) > -1) {
             list.push(students[i]);
             
             
          }else {
            students[i].style.display = 'none';
-
          }
       }
-      showPage(list, 1);
+      deletePage();
+      showPage(list, page);
       appendPageLinks(list);
+
+      
    
    }
 
@@ -93,7 +103,7 @@ const searchForm = (list, name) => {
    
 
 
-//Calling the two functions.
+//Calling the main functions
 showPage(students, page);
 appendPageLinks(students);
-searchForm(students);
+searchForm();
