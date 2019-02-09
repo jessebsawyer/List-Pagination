@@ -4,9 +4,6 @@ const pageHeader = document.querySelector('.page-header');
 let page = 1;
 let studentsPerPage = 10;
 
-
-
-
 //Function to show only 10 students on the page
 const showPage = (list, page) => {
    const highRange = page * studentsPerPage - 1;
@@ -84,12 +81,9 @@ const searchForm = () => {
       deletePage();
       showPage(list, page);
       appendPageLinks(list);
-
-      
-   
    }
 
- 
+   //Call event listeners.
    input.addEventListener('keyup', (e) => {
       filterNames();
    })
@@ -97,11 +91,6 @@ const searchForm = () => {
       filterNames();
    })
 }   
-
-   
-   
-   
-
 
 //Calling the main functions
 showPage(students, page);
