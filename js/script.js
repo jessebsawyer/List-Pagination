@@ -4,6 +4,7 @@ const pageHeader = document.querySelector('.page-header');
 let page = 1;
 let studentsPerPage = 10;
 
+
 //Function to show only 10 students on the page
 const showPage = (list, page) => {
    const highRange = page * studentsPerPage - 1;
@@ -34,8 +35,14 @@ const appendPageLinks = (list) => {
       a.href = "#";
       ul.appendChild(li); 
       li.appendChild(a); 
-      li.addEventListener('click', (e) => {
+      a.addEventListener('click', (e) => {
          showPage(students, i);
+         let current = document.getElementsByClassName('active');
+         if (current.length > 0) {
+            current[0].className = current[0].className.replace("active", "");
+         }
+         e.target.className = 'active';
+         
       });
    } 
 }
@@ -56,9 +63,8 @@ const searchForm = () => {
 
    //Delete page Links function
    const deletePage = () => {
-      for (let i = 0; i < students.length; i++) {
-         students[i].style.display = 'none';
-      }
+      const deleteClass = document.getElementsByClassName("pagination");
+      deleteClass.className = deleteClass.className.replace("pagination", "");
    }
    
    
