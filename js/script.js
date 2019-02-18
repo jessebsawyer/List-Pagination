@@ -35,10 +35,8 @@ const appendPageLinks = (list) => {
       a.href = "#";
       ul.appendChild(li); 
       li.appendChild(a); 
-     // const currentActive = document.querySelectorAll(a);
-      //currentActive[0].className = 'active';
-      //I've also tried this.
-      a[0].className = 'active';
+      const currentActive = document.querySelector('a')
+      currentActive.className = 'active';
       a.addEventListener('click', (e) => {
          showPage(students, i);
          let current = document.getElementsByClassName('active');
