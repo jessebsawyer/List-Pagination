@@ -20,6 +20,7 @@ const showPage = (list, page) => {
  
 //Function to append number links at bottom of page
 const appendPageLinks = (list) => {
+   
    const pageNum = Math.ceil(list.length/10);
    const firstDiv = document.querySelector('.page');
    const div = document.createElement("div");
@@ -63,10 +64,9 @@ const searchForm = () => {
    button.type = 'submit';
    button.textContent = "SUBMIT";
 
-   //Delete page Links function
    const deletePage = () => {
-      const deleteClass = document.getElementsByClassName("pagination");
-      deleteClass.className = deleteClass.className.replace("pagination", "");
+      const paginationDiv = document.getElementsByClassName('pagination');
+      paginationDiv.parentNode.removeChild(paginationDiv);
    }
    
    
@@ -85,8 +85,9 @@ const searchForm = () => {
          }else {
            students[i].style.display = 'none';
          }
+           
       }
-      //deletePage();
+      deletePage();
       showPage(list, page);
       appendPageLinks(list);
    }
