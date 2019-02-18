@@ -67,6 +67,7 @@ const searchForm = () => {
    const deletePage = () => {
       const paginationDiv = document.getElementsByClassName('pagination')[0];
       const paginationUl = paginationDiv.firstChild;
+      console.log(paginationUl);
       paginationDiv.removeChild(paginationUl);
    }
    
@@ -86,7 +87,9 @@ const searchForm = () => {
          }else {
            students[i].style.display = 'none';
          }
-           
+           let div = document.createElement('div');
+           let message = '<h3>' + 'No results found.' + '</h3>';
+           div.innerHTML = message;
       }
       deletePage();
       showPage(list, page);
