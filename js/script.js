@@ -35,6 +35,7 @@ const appendPageLinks = (list) => {
       a.href = "#";
       ul.appendChild(li); 
       li.appendChild(a); 
+     
       a.addEventListener('click', (e) => {
          showPage(students, i);
          let current = document.getElementsByClassName('active');
@@ -84,7 +85,7 @@ const searchForm = () => {
            students[i].style.display = 'none';
          }
       }
-      deletePage();
+      //deletePage();
       showPage(list, page);
       appendPageLinks(list);
    }
