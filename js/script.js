@@ -65,8 +65,9 @@ const searchForm = () => {
    button.textContent = "SUBMIT";
 
    const deletePage = () => {
-      const paginationDiv = document.getElementsByClassName('pagination');
-      paginationDiv.parentNode.removeChild(paginationDiv);
+      const paginationDiv = document.getElementsByClassName('pagination')[0];
+      const paginationUl = paginationDiv.firstChild;
+      paginationDiv.removeChild(paginationUl);
    }
    
    
@@ -87,7 +88,7 @@ const searchForm = () => {
          }
            
       }
-     // deletePage();
+      deletePage();
       showPage(list, page);
       appendPageLinks(list);
    }
