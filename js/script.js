@@ -85,9 +85,10 @@ const searchForm = () => {
             
          }else {
            students[i].style.display = 'none';
-           
+           let ulClass = document.getElementsByClassName('student-list')[0];
+           ulClass.textContent = 'No results found.';
          }
-           
+          
       }
       deletePage();
       showPage(list, page);
