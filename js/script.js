@@ -75,19 +75,28 @@ const searchForm = () => {
    const filterNames = () => {
       let filterValue = input.value.toUpperCase();
       let list = [];
+      let ifFound = false;
       
       for (let i = 0; i < students.length; i++) {
          let a = students[i].getElementsByTagName('h3')[0];
          
          if (a.innerHTML.toUpperCase().indexOf(filterValue) > -1) {
             list.push(students[i]);
+            ifFound = true;
             
             
          }else {
            students[i].style.display = 'none';
-           let ulClass = document.getElementsByClassName('student-list')[0];
-           ulClass.textContent = 'No results found.';
+           
          }
+
+         if (!ifFound) {
+            let p = document.createElement('p');
+            pageHeader.appendChild(p);
+            p.textContent = "No results found.";
+            console.log(p);
+            
+         } 
           
       }
       deletePage();
