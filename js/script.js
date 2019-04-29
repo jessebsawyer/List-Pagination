@@ -86,7 +86,13 @@ const searchForm = () => {
          }
       }
 
-      
+     /* const liAll = document.querySelectorAll('li');
+      if (liAll.style.display = 'none') {
+         let noRes = document.createElement('h3');
+         pageHeader.appendChild(noRes);
+         noRes.className = "errorMessage";
+         document.getElementsByClassName('errorMessage').innerHTML = 'No results found.';
+      } */
 
       deletePage();
       showPage(list, page);
