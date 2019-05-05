@@ -75,6 +75,8 @@ const searchForm = () => {
    const filterNames = () => {
       let filterValue = input.value.toUpperCase();
       let list = [];
+      let noRes = document.createElement('h3');
+      let h2 = document.getElementsByTagName('h2')[0];
       
       for (let i = 0; i < students.length; i++) {
          let a = students[i].getElementsByTagName('h3')[0];
@@ -86,13 +88,22 @@ const searchForm = () => {
          }
       }
 
-     /* const liAll = document.querySelectorAll('li');
-      if (liAll.style.display = 'none') {
-         let noRes = document.createElement('h3');
-         pageHeader.appendChild(noRes);
-         noRes.className = "errorMessage";
-         document.getElementsByClassName('errorMessage').innerHTML = 'No results found.';
-      } */
+      
+      if (list.length === 0) {
+         h2.appendChild(noRes);
+         noRes.textContent = "No results found...";
+         noRes.style.fontSize = '12px';
+         noRes.style.paddingTop = '20px';
+         console.log(noRes);
+      }
+
+      if (list.length >= 1) {
+         noRes.style.display = 'none';
+      }
+       
+         
+      
+      
 
       deletePage();
       showPage(list, page);
