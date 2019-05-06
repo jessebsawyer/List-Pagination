@@ -96,8 +96,8 @@ const searchForm = () => {
          noRes.style.paddingTop = '20px';
          console.log(noRes);
       }
-
-      if (list.length >= 1) {
+      // Why is this not working?
+      if (list.length >= 1 && noRes.style.display == 'block') {
          noRes.style.display = 'none';
       }
        
