@@ -3,7 +3,13 @@ const students = document.getElementsByClassName("student-item cf");
 const pageHeader = document.querySelector('.page-header');
 let page = 1;
 let studentsPerPage = 10;
-
+let noRes = document.createElement('h3');
+let h2 = document.getElementsByTagName('h2')[0];
+h2.appendChild(noRes);
+noRes.textContent = "No results found...";
+noRes.style.fontSize = '12px';
+noRes.style.paddingTop = '20px';
+noRes.style.display = 'none'; 
 
 //Function to show only 10 students on the page
 const showPage = (list, page) => {
@@ -75,13 +81,7 @@ const searchForm = () => {
    const filterNames = () => {
       let filterValue = input.value.toUpperCase();
       let list = [];
-      let noRes = document.createElement('h3');
-      let h2 = document.getElementsByTagName('h2')[0];
-      h2.appendChild(noRes);
-      noRes.textContent = "No results found...";
-      noRes.style.fontSize = '12px';
-      noRes.style.paddingTop = '20px';
-      noRes.style.display = 'none';
+      
 
       for (let i = 0; i < students.length; i++) {
          let a = students[i].getElementsByTagName('h3')[0];
@@ -92,6 +92,7 @@ const searchForm = () => {
            students[i].style.display = 'none';
          }
       }
+      
 
       
       if (list.length === 0) {
