@@ -77,7 +77,12 @@ const searchForm = () => {
       let list = [];
       let noRes = document.createElement('h3');
       let h2 = document.getElementsByTagName('h2')[0];
-      
+      h2.appendChild(noRes);
+      noRes.textContent = "No results found...";
+      noRes.style.fontSize = '12px';
+      noRes.style.paddingTop = '20px';
+      noRes.style.display = 'none';
+
       for (let i = 0; i < students.length; i++) {
          let a = students[i].getElementsByTagName('h3')[0];
          
@@ -90,17 +95,11 @@ const searchForm = () => {
 
       
       if (list.length === 0) {
-         h2.appendChild(noRes);
-         noRes.textContent = "No results found...";
-         noRes.style.fontSize = '12px';
-         noRes.style.paddingTop = '20px';
-         console.log(noRes);
-      }
-      // Why is this not working?
-      if (list.length >= 1 && noRes.style.display == 'block') {
+         noRes.style.display = 'block';
+      }else {
          noRes.style.display = 'none';
       }
-       
+      
          
       
       
