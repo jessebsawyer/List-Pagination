@@ -89,11 +89,12 @@ const searchForm = () => {
          if (a.innerHTML.toUpperCase().indexOf(filterValue) > -1) {
             list.push(students[i]);
          }else {
-           students[i].style.display = 'none';
+           students.style.display = 'none';
          }
       }
       
-
+console.log(list.length);
+console.log(students.length);
       
       if (list.length === 0) {
          noRes.style.display = 'block';
