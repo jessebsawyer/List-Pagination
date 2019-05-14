@@ -82,14 +82,12 @@ const searchForm = () => {
       let filterValue = input.value.toUpperCase();
       let list = [];
       
-
       for (let i = 0; i < students.length; i++) {
          let a = students[i].getElementsByTagName('h3')[0];
+         students[i].style.display = 'none';
          
          if (a.innerHTML.toUpperCase().indexOf(filterValue) > -1) {
             list.push(students[i]);
-         }else {
-           students.style.display = 'none';
          }
       }
       
