@@ -45,7 +45,7 @@ const appendPageLinks = (list) => {
       const currentActive = document.querySelector('a')
       currentActive.className = 'active';
       a.addEventListener('click', (e) => {
-         showPage(students, i);
+         showPage(list, i);
          let current = document.getElementsByClassName('active');
          if (current.length > 0) {
             current[0].className = current[0].className.replace("active", "");
@@ -88,11 +88,12 @@ const searchForm = () => {
          
          if (a.innerHTML.toUpperCase().indexOf(filterValue) > -1) {
             list.push(students[i]);
-         }
+         } 
       }
       
 console.log(list.length);
 console.log(students.length);
+
       
       if (list.length === 0) {
          noRes.style.display = 'block';
